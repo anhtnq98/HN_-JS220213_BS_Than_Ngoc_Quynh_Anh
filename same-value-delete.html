@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xóa phần tử trùng trong mảng</title>
+</head>
+
+<body>
+    <!-- Viết một chương trình xóa các phần tử trùng của một mảng và in ra kết quả. -->
+    <script>
+        let arr = [1,1,2,2,3,3,4,4,5,5];
+
+        function sameDelete(arr) {
+            let result = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (!result.includes(arr[i])) {
+                    result.push(arr[i]);
+                }
+            }
+            return result;
+        }
+        let newArray = sameDelete(arr);
+        document.write(newArray);
+    </script>
+</body>
+
+</html>

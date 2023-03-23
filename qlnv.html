@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý nhân viên</title>
+</head>
+
+<body>
+    <!-- Tạo một mảng gồm 3 nhân viên Rikkei Academy (tên nhân viên). Xây dựng chương
+trình quản lý nhân viên với các chức năng (Read, Create, Update, Delete). -->
+    <h1>Quản lý nhân viên</h1>
+    <label for="">Nhập tên</label>
+    <input id="name" type="text">
+    <label for="">Tuổi</label>
+    <input id="age" type="text">
+    <button onclick="create()" id="create()">Lưu</button>
+    <table id="showP" border="1px">
+    </table>
+
+    <script>
+        let listPerson = [];
+        function create() {
+            let valueName = document.getElementById("name").value;
+            let valueAge = document.getElementById("age").value;
+
+            let newPerson = {
+                name: valueName,
+                age: valueAge,
+            }
+
+            listPerson.push(newPerson);
+            renderPerson()
+        }
+
+        renderPerson()
+
+        function renderPerson() {
+            let result =
+                `
+                    <tr>
+                        <td>Số thứ tự</td>
+                        <td>Tên nhân viên</td>
+                        <td>Tuổi</td>
+                        <td colspan ="2">Sửa/Xóa</td>
+                    </tr>
+                    `;
+
+            for (i = 0; i < listPerson.length; i++) {
+                result +=
+                    `
+                    <tr>
+                        <td>${i + 1}</td>
+                        <td>${listPerson[i].name}</td>
+                        <td>${listPerson[i].age}</td>
+                        <td><button onclick = "editPerson(${i})">Sửa</button></td>
+                        <td><button onclick = "deletePerson(${i})">Xóa</button></td>
+                    </tr>
+                    `
+            }
+            document.getElementById("showP").innerHTML = result;
+        }
+
+        function editPerson(id) {
+            let newName = prompt("Nhập tên mới");
+            let newAge = prompt("Nhập tuổi mới");
+            document.getElementById("name").value = listPerson[id].name;
+            document.getElementById("age").value = listPerson[id].age;
+            renderPerson();
+        }
+
+        function deletePerson(id) {
+            listPerson.splice(id, 1);
+            renderPerson();
+        }
+    </script>
+</body>
+
+</html>
