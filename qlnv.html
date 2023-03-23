@@ -64,12 +64,11 @@ trình quản lý nhân viên với các chức năng (Read, Create, Update, Del
         }
 
         function editPerson(id) {
-            let newName = prompt("Nhập tên mới");
-            let newAge = prompt("Nhập tuổi mới");
-            document.getElementById("name").value = listPerson[id].name;
-            document.getElementById("age").value = listPerson[id].age;
+            let nameChange = prompt("nhập thông tin muốn thay đổi")
+            listPerson.splice(id, 1, nameChange);
             renderPerson();
         }
+
 
         function deletePerson(id) {
             listPerson.splice(id, 1);
